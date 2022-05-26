@@ -1,3 +1,6 @@
+#pragma once
+
+// A generic 2-dimensional vector class.
 template <typename T>
 struct vec2
 {
