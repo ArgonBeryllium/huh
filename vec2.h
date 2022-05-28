@@ -1,4 +1,5 @@
 #pragma once
+#include <cmath>
 
 // A generic 2-dimensional vector class.
 template <typename T>
@@ -7,7 +8,7 @@ struct vec2
 	T x, y;
 	vec2() : x(0), y(0) {}
 	vec2(const T x_, const T y_) : x(x_), y(y_) {}
-	T getLength() { return sqrt(x*x + y*y); }
+	T getLength() { return std::sqrt(x*x + y*y); }
 	T getLengthSquare() { return x*x + y*y; }
 	vec2<T> normalised()  { T l = getLength(); return l==0 ? vec2{} : *this / l; }
 
