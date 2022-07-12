@@ -11,9 +11,9 @@ struct vec2
 	template <typename VectorType>
 	vec2(const VectorType& v) : x(v.x), y(v.y) {}
 
-	T getLength() { return std::sqrt(x*x + y*y); }
-	T getLengthSquare() { return x*x + y*y; }
-	vec2<T> normalised()  { T l = getLength(); return l==0 ? vec2{} : *this / l; }
+	T getLength() const { return std::sqrt(x*x + y*y); }
+	T getLengthSquare() const { return x*x + y*y; }
+	vec2<T> normalised() const  { T l = getLength(); return l==0 ? vec2{} : *this / l; }
 
 	template <typename T2>
 	vec2<T2> to() const { return {static_cast<T2>(x), static_cast<T2>(y)}; }
