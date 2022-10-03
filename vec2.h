@@ -7,11 +7,11 @@ struct vec2
 {
 	T x, y;
 	vec2() : x(0), y(0) {}
-	vec2(const T x_, const T y_) : x(x_), y(y_) {}
+	vec2(const T& x_, const T& y_) : x(x_), y(y_) {}
 	template <typename VectorType>
 	vec2(const VectorType& v) : x(v.x), y(v.y) {}
 
-	T getLength() const { return std::sqrt(x*x + y*y); }
+	T getLength() const { return std::sqrt(getLengthSquare()); }
 	T getLengthSquare() const { return x*x + y*y; }
 	vec2<T> normalised() const  { T l = getLength(); return l==0 ? vec2{} : *this / l; }
 
@@ -47,11 +47,10 @@ template <typename T1, typename T2>
 inline vec2<T1> operator*(const vec2<T1>& v, const T2& s) { return vec2<T1>{v.x*static_cast<T1>(s), v.y*static_cast<T1>(s)}; }
 template <typename T1, typename T2>
 inline vec2<T1> operator/(const vec2<T1>& v, const T2& s) { return vec2<T1>{v.x/static_cast<T1>(s), v.y/static_cast<T1>(s)}; }
-
 template <typename T1, typename T2>
-inline vec2<T1> operator*(const T1& s, const vec2<T2>& v) { return vec2<T1>{s*static_cast<T1>(v.x), s*static_cast<T1>(v.y)}; }
+inline vec2<T1> operator*(const T1& s, const vec2<T2>& v) { return v*s; }
 template <typename T1, typename T2>
-inline vec2<T1> operator/(const T1& s, const vec2<T2>& v) { return vec2<T1>{s/static_cast<T1>(v.x), s/static_cast<T1>(v.y)}; }
+inline vec2<T1> operator/(const T1& s, const vec2<T2>& v) { return v/s; }
 
 template <typename T>
 inline bool operator==(const vec2<T>& a, const vec2<T>& b) { return a.x==b.x && a.y==b.y; }
