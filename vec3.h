@@ -83,7 +83,7 @@ inline vec3<T1> operator/(const vec3<T1>& v, const T2& s) { return vec3<T1>{v.x/
 template <typename T1, typename T2>
 inline vec3<T1> operator*(const T1& s, const vec3<T2>& v) { return v*s; }
 template <typename T1, typename T2>
-inline vec3<T1> operator/(const T1& s, const vec3<T2>& v) { return v/s; }
+inline vec3<T1> operator/(const T1& s, const vec3<T2>& v) { return vec3<T1>{s/static_cast<T1>(v.x), s/static_cast<T1>(v.y), s/static_cast<T1>(s.z)}; }
 
 template <typename T>
 inline bool operator==(const vec3<T>& a, const vec3<T>& b) { return a.x==b.x && a.y==b.y && a.z==b.z; }
