@@ -1,4 +1,5 @@
 #pragma once
+#include "strex.h"
 #include <cmath>
 
 // A generic 2-dimensional vector class.
@@ -30,6 +31,13 @@ struct vec2
 	void operator*=(const T2& s) { x *= static_cast<T>(s); y *= static_cast<T>(s); }
 	template <typename T2>
 	void operator/=(const T2& s) { x /= static_cast<T>(s); y /= static_cast<T>(s); }
+
+	T& operator[](const int& i)
+	{
+		if(i == 0) return x;
+		if(i == 1) return y;
+		else throw strex("invalid axis index");
+	}
 
 	static T dot(const vec2& a, const vec2& b);
 };
