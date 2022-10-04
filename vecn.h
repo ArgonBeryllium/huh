@@ -31,7 +31,7 @@ struct vecn
 	T getLength() const { return std::sqrt(getLengthSquare()); }
 	T getLengthSquare() const
 	{
-		T out;
+		T out = 0;
 		for(auto e : val) out += e*e;
 		return out;
 	}
@@ -130,7 +130,7 @@ inline bool operator!=(const vecn<N, T>& a, const vecn<N, T>& b) { return !(a==b
 template <uint8_t N, typename T>
 inline T vecn<N, T>::dot(const vecn<N, T>& a, const vecn<N, T>& b)
 {
-	T out;
+	T out = 0;
 	for(auto i = 0; i != N; i++) out += a[i]*b[i];
 	return out;
 }
