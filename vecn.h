@@ -9,24 +9,23 @@ template <uint8_t N, typename T>
 struct vecn
 {
 	T val[N];
-	T &x, &y, &z, &w;
-	vecn(T a = 0) : x(val[0]), y(N>1?val[1]:val[0]), z(N>2?val[2]:val[0]), w(N>3?val[3]:val[0])
+	vecn(T a = 0) 
 	{
 		for(auto i = 0; i != N; i++)
 			val[i] = a;
 	}
-	vecn(T v_[N]) : val(v_), x(val[0]), y(N>1?val[1]:val[0]), z(N>2?val[2]:val[0]), w(N>3?val[3]:val[0]) {}
-	vecn(const std::vector<T>& v_) : x(val[0]), y(N>1?val[1]:val[0]), z(N>2?val[2]:val[0]), w(N>3?val[3]:val[0])
+	vecn(T v_[N]) : val(v_) {}
+	vecn(const std::vector<T>& v_) 
 	{
 		for(auto i = 0; i != N; i++) val[i] = v_[i];
 	}
 	template <typename VectorType>
-	vecn(const VectorType& v_) : x(val[0]), y(N>1?val[1]:val[0]), z(N>2?val[2]:val[0]), w(N>3?val[3]:val[0])
+	vecn(const VectorType& v_) 
 	{
 		for(auto i = 0; i != N; i++) val[i] = v_[i];
 	}
 	template <uint8_t N2, typename T2>
-	vecn(const vecn<N2, T2>& vt_) : val(vt_.v), x(val[0]), y(N>1?val[1]:val[0]), z(N>2?val[2]:val[0]), w(N>3?val[3]:val[0]) {}
+	vecn(const vecn<N2, T2>& vt_) : val(vt_.v) {}
 
 	T getLength() const { return std::sqrt(getLengthSquare()); }
 	T getLengthSquare() const
